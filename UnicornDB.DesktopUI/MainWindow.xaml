@@ -5,8 +5,67 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UnicornDB.DesktopUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Fantastic Unicorn DB"
+        Height="450"
+        Width="800"
+        Topmost="{Binding AlwaysOnTop}">
+    <Grid Margin="0,0,10,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <WrapPanel>
+            <Label Content="Unicorn DB title"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontWeight="Bold"
+                   FontFamily="Unispace"
+                   FontSize="18" />
+            <TextBox Width="120"
+                     Margin="0,0,10,0"
+                     Height="18" />
+            <Button Content="Keresés"
+                    Height="18"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Width="50" />
+            <Button Content="Ad unikornis"
+                    Margin="10,0,0,0"
+                    Height="18"
+                    Click="Button_Click" />
+            <CheckBox Content="Always ON TOP"
+                      IsChecked="{Binding AlwaysOnTop}"
+                      VerticalAlignment="Center"
+                      Margin="50,0,0,0" />
+        </WrapPanel>
+        <ListView Grid.Row="1"
+                  x:Name="UnicornList"
+                  ItemsSource="{Binding Unicorns}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel HorizontalAlignment="Stretch">
+                        <TextBlock Text="{Binding Name}"
+                                   Margin="0,0,10,0" />
+                        <TextBlock Text="{Binding Color}"
+                                   Margin="0,0,10,0" />
+                        <TextBlock Text="{Binding HairThickness}"
+                                   Margin="0,0,10,0" />
+                        <TextBlock Text="{Binding HornSize}"
+                                   Margin="0,0,10,0" />
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <WrapPanel Grid.Row="2">
+            <Label Content="Összes unikornis: "
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center" />
+            <TextBlock Text="{Binding UniCount}"
+                       VerticalAlignment="Center" />
+        </WrapPanel>
+
     </Grid>
 </Window>
